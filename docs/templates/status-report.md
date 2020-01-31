@@ -17,3 +17,7 @@
 1. Going to take a look at a.
 2. Have to start b.
 3. Maybe c.
+
+## Any blocks?
+
+* Discuss anything blocking progress.
