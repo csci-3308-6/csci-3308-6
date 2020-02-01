@@ -34,7 +34,6 @@
 ## Keep it simple, stupid.
 
 - [ ] Code is easily understandable.
-- [ ] Complex code makes maintenance and debugging difficult and expensive.
 
 ## Don't use a variable for multiple purposes.
 
@@ -48,5 +47,4 @@
 
 ## Keep functions short.
 
-- [ ] No long functions.
-- [ ] Short functions are used for long functions.
+- [ ] Long functions are broken up into short functions.
