@@ -22,16 +22,17 @@ class Game
     Game(); //add dealer player
     void initializeDeck();
     vector<Player> getPlayers();
-    void turn(Player p); //a player can either hit, stand, double etc.
+    void turn(Player &p); //a player can either hit, stand, double etc.
     void shuffle(); //remove all cards from deck, add all cards to stack in random order
     void dealCards();
     int getCardsLeft();
     void addDealer();
     void addPlayer();
     void removePlayer(Player p);
+    void reBuyin(Player p);
     void hit(Player &p); //if going over while holding ace, change ace to a 1
     void stand(Player p); //if holding ace, take higher number
-    void doubleDown(Player p);
+    void doubleDown(Player &p);
     void displayCards(bool showDealer);
     void runRound(); //play one round
     void runGame(); //add players, loop through turns
