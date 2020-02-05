@@ -139,23 +139,41 @@ void Game::addPlayer()
   players.insert(players.begin(),newPlayer);
 }
 
+void Game::removePlayer(Player p)
+{
+  int loc = -1;
+  for(int i = 0; i < players.size(); i++)
+  {
+    if(players[i].getName() == p.getName())
+    {
+      loc = i; //location to erase
+    }
+  }
+  players.erase(players.begin()+loc); //remove player from game
+}
+
+void Game::reBuyin(Player p)
+{
+
+}
+
 void Game::addDealer()
 {
   Player dealer("dealer",0);
   players.push_back(dealer);
 }
 
-void Game::turn(Player p)
+void Game::turn(Player &p)
 {
   int choice;
-  cout<<p.getName()<<"'s turn"<<endl;
+  cout<<"("<<p.getName()<<"'s turn)"<<endl;
 
   if(p.getName() != "dealer")
   {
     int currTotal = p.getCardSum();
     cout<<p.getName()<<" has: "<<currTotal<<endl;
 
-    while(currTotal <= 21 && choice != 2 && choice != 3)
+    while(p.getCardSum() <= 21 && choice != 2 && choice != 3)
     {
       vector<Card> myHand = p.getHand();
       int cih = p.getCardsInHand();
@@ -179,11 +197,12 @@ void Game::turn(Player p)
             doubleDown(p);
             break;
 
+
         }
       }
       else  //double down not possible
       {
-
+        displayCards(false);
         cout<<"Would "<<p.getName()<<" like to hit(1), or stand(2)?"<<endl;
         //int choice2;
         cin>>choice;
@@ -198,16 +217,24 @@ void Game::turn(Player p)
             stand(p);
             break;
 
+
         }
       }
+      // displayCards(false);
     }
 
   }
   else //dealer's turn
   {
+    vector<Card> dealerHand = p.getHand();
+    cout<<"The dealer flipped over "<<dealerHand[1].getValue()<<" of "<<dealerHand[1].getSuit()<<endl;
+    cout<<"Dealer has "<<p.getCardSum()<<endl;
+    displayCards(true); //show flipped card
+    cout<<endl;
     while(p.getCardSum() <= 16)
     {
       hit(p);
+      displayCards(true);
     }
     stand(p);
 
@@ -250,7 +277,7 @@ void Game::dealCards()
     deck.pop(); //pop of deck
     dealtCard.setInDeck(false);
     players[i].addCard(dealtCard); //add card to players hand
-    cout<<players[i].getName()<<" got a "<<dealtCard.getValue()<<endl;
+    cout<<players[i].getName()<<" got a "<<dealtCard.getValue()<<" of "<<dealtCard.getSuit()<<endl;
   }
   for(int j = 0; j < players.size(); j++)
   {
@@ -262,7 +289,7 @@ void Game::dealCards()
 
     if(players[j].getName() != "dealer")
     {
-      cout<<players[j].getName()<<" got a "<<dealtCard2.getValue()<<endl;
+      cout<<players[j].getName()<<" got a "<<dealtCard2.getValue()<<" of "<<dealtCard2.getSuit()<<endl;
     }
   }
 }
@@ -280,7 +307,7 @@ void Game::hit(Player &p)
   }
   else
   {
-    cout<<p.getName()<<" got a "<<dealtCard.getValue()<<endl;
+    cout<<p.getName()<<" got a "<<dealtCard.getValue()<<" of "<<dealtCard.getSuit()<<endl;
     cout<<p.getName()<<" now has "<<p.getCardSum()<<endl; // + dealtCard.getNumber()
   }
 
@@ -290,10 +317,10 @@ void Game::hit(Player &p)
 
 void Game::stand(Player p)
 {
-  cout<<"stand at "<<p.getCardSum() <<endl;
+  cout<<p.getName()<<" stands at "<<p.getCardSum() <<endl;
 }
 
-void Game::doubleDown(Player p)
+void Game::doubleDown(Player &p)
 {
   cout<<"double down"<<endl;
   int currBet = p.getBet();
@@ -311,19 +338,29 @@ void Game::displayCards(bool showDealer)
   string ds1 = dealer1.getSuit();
   string ds2 = dealer2.getSuit();
 
-  vector<Card> playerCards = players[0].getHand();
-  Card player1 = playerCards[0];
-  Card player2 = playerCards[1];
-  string pv1 = player1.getValue();
-  string pv2 = player2.getValue();
-  string ps1 = player1.getSuit();
-  string ps2 = player2.getSuit();
+  // vector<Card> playerCards = players[0].getHand();
+  // Card player1 = playerCards[0];
+  // Card player2 = playerCards[1];
+  // string pv1 = player1.getValue();
+  // string pv2 = player2.getValue();
+  // string ps1 = player1.getSuit();
+  // string ps2 = player2.getSuit();
+  // for(int i = 0; i < playerCards.size(); i++)
+  // {
+  //   cout<<playerCards[i].getValue()<<"("<<playerCards[i].getSuit()<<endl;
+  // }
 
   cout<<"__________________________________"<<endl;
   cout<<dv1<<"(" << ds1 <<")"<<endl;
   if(showDealer)
   {
-    cout<<dv2<<"(" << ds2 <<")"<<endl;
+    //cout<<dv2<<"(" << ds2 <<")"<<endl;
+    for(int j = 1; j < dealerCards.size(); j++)
+    {
+      cout<<dealerCards[j].getValue()<<"("<<dealerCards[j].getSuit()<<")"<<endl;
+
+    }
+    cout<<"Dealer total: "<<players[players.size()-1].getCardSum()<<endl;
   }
   else {
     cout<<"?(?)"<<endl;
@@ -333,8 +370,28 @@ void Game::displayCards(bool showDealer)
   cout<<"-----------------------------------"<<endl;
   cout<<endl;
   cout<<endl;
-  cout<<pv1<<"(" << ps1 <<")"<<endl;
-  cout<<pv2<<"(" << ps2 <<")"<<endl;
+
+  for(int i = 0; i < players.size()-1; i++)
+  {
+    cout<<players[i].getName()<<": ";
+    vector<Card> playerCards = players[i].getHand();
+    for(int j = 0; j < playerCards.size(); j++)
+    {
+      cout<<playerCards[j].getValue()<<"("<<playerCards[j].getSuit()<<") , ";
+
+    }
+    cout<<players[i].getName()<<" total: "<<players[i].getCardSum()<<endl;
+    // cout<<playerCards[i].getValue()<<"("<<playerCards[i].getSuit()<<")   |   ";
+  }
+  cout<<endl;
+    // for(int j = 0; j < playerCards.size(); j++)
+    // {
+    //   cout<<playerCards[i].getValue()<<"("<<playerCards[i].getSuit()<<")"<<endl;
+    // }
+  //}
+
+  //cout<<endl;
+  // cout<<players[0].getName()<<" total: "<<players[0].getCardSum()<<endl;
   cout<<"__________________________________"<<endl;
 
 
@@ -345,25 +402,36 @@ void Game::runRound()
 {
   int n;
   //check if reshuffle is need
-  if(cardsLeft <= 6*players.size())
+  cout<<deck.size()<<" cards left"<<endl;
+  if(deck.size() <= 6*players.size())
   {
     shuffle();
   }
   //players bet
   for(int x = 0; x < players.size() - 1; x++)
   {
-    cout<<players[x].getName()<<" bets: ";
+    cout<<players[x].getName()<<" has "<<players[x].getChips()<<" chips"<<endl;
+    cout<<"bet (-1) to leave game."<<endl;
+    cout<<players[x].getName()<<" bets: $";
     cin>>n;
-    players[x].placeBet(n); //place a bet
+    if(n == -1)
+    {
+      cout<<players[x].getName()<<" has left the game."<<endl;
+      removePlayer(players[x]);
+      //break;
+    }
+    else{
+      players[x].placeBet(n); //place a bet
+    }
   }
   //deal cards
   dealCards();
   //display cards (first card for dealer)
-  displayCards(false);
+  // displayCards(false);
 
   for(int i = 0; i < players.size(); i++) //loop through all players, dealer last
   {
-
+    displayCards(false);
     turn(players[i]);
 
   }
@@ -410,6 +478,31 @@ void Game::runRound()
     players[z].clearHand();
     players[z].placeBet(0);
   }
+
+  //check for buyin
+  for(int y = 0; y < players.size()-1; y++)
+  {
+    if(players[y].getChips() == 0) //if out of money
+    {
+      cout<<players[y].getName()<<" is out of chips, would you like to buy back in? (y/n)";
+      string ans;
+      cin>>ans;
+      if(ans == "y" || ans == "Y") //buy back in
+      {
+        cout<<"How much would you like to buy in with?";
+        int amount;
+        cin>>amount;
+        players[y].adjustChips(amount);
+      }
+      else //remove from game
+      {
+        cout<<players[y].getName()<<" has left the game."<<endl;
+        removePlayer(players[y]);
+      }
+    }
+  }
+
+  cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;
 
 }
 
