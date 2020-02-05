@@ -152,13 +152,15 @@ void Game::turn(Player p)
 
   if(p.getName() != "dealer")
   {
-    cout<<p.getName()<<" has: "<<p.getCardSum()<<endl;
+    int currTotal = p.getCardSum();
+    cout<<p.getName()<<" has: "<<currTotal<<endl;
 
-    while(p.getCardSum() <= 21 && choice != 2 && choice != 3)
+    while(currTotal <= 21 && choice != 2 && choice != 3)
     {
       vector<Card> myHand = p.getHand();
+      int cih = p.getCardsInHand();
 
-      if(p.getCardsInHand() == 2) //double down possible
+      if(cih == 2) //double down possible
       {
         cout<<"Would "<<p.getName()<<" like to hit(1), stand(2), or double down(3)?"<<endl;
         //int choice;
@@ -168,6 +170,7 @@ void Game::turn(Player p)
         {
           case(1):
             hit(p);
+            cih++; //increment num cards in hand
             break;
           case(2):
             stand(p);
@@ -189,6 +192,7 @@ void Game::turn(Player p)
         {
           case(1):
             hit(p);
+            cih++;
             break;
           case(2):
             stand(p);
@@ -201,14 +205,12 @@ void Game::turn(Player p)
   }
   else //dealer's turn
   {
-    if(p.getCardSum() <= 16)
+    while(p.getCardSum() <= 16)
     {
       hit(p);
     }
-    else
-    {
-      stand(p);
-    }
+    stand(p);
+
   }
 
 }
@@ -265,11 +267,13 @@ void Game::dealCards()
   }
 }
 
-void Game::hit(Player p)
+void Game::hit(Player &p)
 {
   cout<<"hit"<<endl;
   Card dealtCard = deck.top();
   deck.pop(); //pop of deck
+  dealtCard.setInDeck(false);
+  p.addCard(dealtCard); //add card to players hand
   if(p.getName() == "dealer" && p.getHand().size() == 1) //dont reveal dealers 2nd card
   {
 
@@ -277,16 +281,16 @@ void Game::hit(Player p)
   else
   {
     cout<<p.getName()<<" got a "<<dealtCard.getValue()<<endl;
-    cout<<p.getName()<<" now has "<<p.getCardSum() + dealtCard.getNumber()<<endl;
+    cout<<p.getName()<<" now has "<<p.getCardSum()<<endl; // + dealtCard.getNumber()
   }
 
-  dealtCard.setInDeck(false);
-  p.addCard(dealtCard); //add card to players hand
+  // dealtCard.setInDeck(false);
+  // p.addCard(dealtCard); //add card to players hand
 }
 
 void Game::stand(Player p)
 {
-  cout<<"stand at "<<p.getCardSum() + <<endl;
+  cout<<"stand at "<<p.getCardSum() <<endl;
 }
 
 void Game::doubleDown(Player p)
