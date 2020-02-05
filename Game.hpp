@@ -29,7 +29,7 @@ class Game
     void addDealer();
     void addPlayer();
     void removePlayer(Player p);
-    void hit(Player p); //if going over while holding ace, change ace to a 1
+    void hit(Player &p); //if going over while holding ace, change ace to a 1
     void stand(Player p); //if holding ace, take higher number
     void doubleDown(Player p);
     void displayCards(bool showDealer);
