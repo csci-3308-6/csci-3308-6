@@ -1,4 +1,4 @@
-# Project Name
+# Virtual Casino
 
 Here's a short description of our project.
 
@@ -8,8 +8,9 @@ Here's a short description of our project.
 * [2: Quick Start](https://github.com/csci-3308-6/csci-3308-6/blob/master/readme.md#2-quick-start)
 * [3: Documentation](https://github.com/csci-3308-6/csci-3308-6/blob/master/readme.md#3-documentation)
 
-## 1: What is [project-name]?
+## 1: What is Virtual Casino?
 
 ## 2: Quick Start
 
 ## 3: Documentation
+
