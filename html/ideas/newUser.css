@@ -1,0 +1,35 @@
+html,
+body{
+    height: 100%
+}
+
+body{
+    margin: 0; /* Space from this element (entire page) and others*/
+   padding: 0; /*space from content and border*/
+   border: solid blue;
+   border-width: thin;
+   overflow:hidden;
+   display:block;
+   box-sizing: border-box;
+}
+
+.option-wrapper {
+  border: 2px solid blue;
+  width: 150px;
+  text-align: center;
+}
+
+.option-title {
+  color: blue;
+  margin-top: 10px;
+}
+
+.options {
+  margin-top: 10px;
+}
+
+.option {
+  border: 1px solid grey;
+  margin: 10px;
+  padding: 6px 0px;
+}
