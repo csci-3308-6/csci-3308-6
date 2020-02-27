@@ -5,11 +5,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Outside</title>
+    <style>
+    canvas {
+        border:1px solid #d3d3d3;
+        background-color: #f1f1f1;
 
+    }
+    </style>
 </head>
-<body>
-    <center><img class="mb-4" src="./blackbox.svg" alt="" height = "" width = "200"></center>
-    <center><img class="mb-4" src="./uparrow.svg" alt="" height = "" width = "50"></center>
+
+<body onload="initializeOutside()">
+    <!--<center><img class="mb-4" src="./blackbox.svg" alt="" height = "" width = "200"></center>
+    <center><img class="mb-4" src="./uparrow.svg" alt="" height = "" width = "50"></center> -->
+
+    <script>
+        var character;
+
+
+        function initializeOutside()
+        {
+            character = new display(30,30,"yellow",640,250, "Richard");
+            movementArea.start();
+        }
+
+        function display(width, height, color, x, y, name)
+        {
+            this.width = width;
+            this.height = height;
+            //this.dName = dName;
+            this.x = x;
+            this.y = y;
+            this.speedX = 0;
+            this.speedY = 0;
+            this.update = function() {
+                ctx = movementArea.context;
+                ctx.fillStyle = color;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                dname = movementArea.context;
+                dname.fillStyle = "black";
+                dname.font = "30px Arial";
+                var x = (name.length / 2)*10
+                dname.fillText(name, this.x-x, this.y+70);
+                casino = movementArea.context;
+                casino.fillStyle = "black";
+                casino.fillRect(550,0,200,80);
+                casinoLabel = movementArea.context;
+                casinoLabel.fillStyle = "Red";
+                casinoLabel.font = "40px Arial";
+                casinoLabel.fillText("CASINO", 572, 50);
+            }
+            this.newPos = function() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            }
+        }
+
+        var movementArea = {
+            canvas : document.createElement("canvas"),
+            start : function() {
+                this.canvas.width = 1300;
+                this.canvas.height = 500;
+                this.context = this.canvas.getContext("2d");
+                document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+                this.interval = setInterval(updateArea, 20);
+            },
+            clear : function() {
+                this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            }
+        }
+
+        function updateArea()
+        {
+            movementArea.clear();
+            character.newPos();
+            character.update();
+            dName.newPos();
+            dName.update();
+        }
+
+
+
+        document.addEventListener('keydown', function(event) {
+            //left
+            if(event.keyCode == 65) {
+                moveleft();
+            }
+            //top
+            else if(event.keyCode == 87) {
+                moveup();
+            }
+            //right
+            else if(event.keyCode == 68) {
+                moveright();
+            }
+            //bottom
+            else if(event.keyCode == 83) {
+                movedown();
+            }
+        });
+
+        function checkEnter()
+        {
+            if(character.y == 80 && character.x > 520 && character.x < 750)
+            {
+                document.getElementById("enter").disabled = false;
+                return true;
+            }
+            else{
+                document.getElementById("enter").disabled = true;
+                return false;
+            }
+        }
+
+        function moveup() {
+            if(checkEnter() == false && character.y >= 0){
+                character.y -= 10;
+            }
+        }
+
+        function movedown() {
+
+            if(character.y <= 460){
+                character.y += 10;
+                checkEnter();
+            }
+        }
+
+        function moveleft() {
+            if(!(character.x == 750 && character.y < 80)){
+                character.x -= 10;
+                checkEnter();
+            }
+        }
+
+        function moveright() {
+            if(!(character.x == 520 && character.y < 80)){
+                character.x += 10;
+                checkEnter();
+            }
+        }
+
+        function enter()
+        {
+            if(character.y == 80)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+    </script>
+
+    <button class="button" disabled alt="start" id="enter" onclick="">Enter Casino</button>
+
 
 </body>
 </html>
