@@ -11,8 +11,6 @@ CREATE TABLE user_info (            /* general user information */
   num_games_played INT NOT NULL,
   games_won INT,
 
-  colors text[],              /* arrays for items bought in store, user can change current_color from this array */
-  shapes text[],
   current_shape VARCHAR(10),  /* current shape and color of user to display on screen */
   current_color VARCHAR(10)
 
@@ -20,11 +18,17 @@ CREATE TABLE user_info (            /* general user information */
 );
 
 INSERT INTO user_info ()      /* when new user is created add all this info */
-VALUES (); /* change " " to user input strings ?? */
+VALUES ();
 
-/* current_color and current_shape need to be updated immediatly when user is created -- arrays need to be updated as new stuff is bought -- current needs to be changed when user changes his color */
+
+CREATE TABLE inventory(
+
+);
+
 
 
 /*
-  may be more efficent in future to have seprate tables for accessing information
+  1. need to find a way to hold inventory of items bought from store
+      - someone was syaing three tables, and one center table with somethin idk
+  2. may be more efficent in future to have seprate tables for accessing information
 */
