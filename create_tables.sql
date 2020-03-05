@@ -6,7 +6,7 @@ CREATE TABLE user_info (            /* general user information */
   email VARCHAR(100) UNIQUE NOT NULL,
   passowrd VARCHAR(20) NOT NULL,       /* NEEDS TO BE MADE PRIVATE SOMEHOW */
   display_name VARCHAR(2),
-  points INT,
+  points FLOAT,
   current_shape VARCHAR(10),
   current_color VARCHAR(10),
   date_created DATE,
@@ -15,13 +15,14 @@ CREATE TABLE user_info (            /* general user information */
 
 
 CREATE TABLE games_played(            /* for displaying info */
-  id INT refrences user_info(id),    /* not sure if this is correct syntax or if this is the correct way to easily access data (by user id?)*/
   num_games_played INT NOT NULL,
   games_won INT,
+  /* foriegn key? */
 );
 
 
 CREATE TABLE items_bought (
   colors text[],              /* arrays for items bought in store */
   shapes text[],
+  /* foriegn key? */
 );
