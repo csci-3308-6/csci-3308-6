@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'Casino';
+    src: URL('./casino-font/Casino.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Casino';
+    margin: 50px;
+    background-color: black;
+}
+
+h1 {
+    font-size: 144px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -webkit-animation: colorchange 4s infinite alternate;
+}
+
+img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: auto;
+    width: 50%;
+}
+
+button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+ul {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        margin: 2px;
+    }
+    h1 {
+        font-size: 72px;
+    }
+    img {
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes colorchange {
+    0% {
+        color: red;
+    }
+    10% {   
+        color: yellow;
+    }
+    20% {
+        color: red;
+    }
+    30% {   
+        color: yellow;
+    }
+    40% {   
+        color: red;
+    }  
+    50% {   
+        color: yellow;
+    }  
+    60% {    
+        color: red;
+    }  
+    70% {    
+        color: yellow;
+    }
+    80% { 
+        color: red;
+    }  
+    90% { 
+        color: yellow;
+    }  
+    100% {
+        color: red;
+    }
+}
