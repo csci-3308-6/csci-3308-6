@@ -1,16 +1,15 @@
 # Virtual Casino
 
-Here's a short description of our project.
+The code is divided up into sections.
 
-## Contents
+## Section 1: Front End
 
-* [1: What is [project-name]?](https://github.com/csci-3308-6/csci-3308-6#1-what-is-project-name)
-* [2: Quick Start](https://github.com/csci-3308-6/csci-3308-6/blob/master/readme.md#2-quick-start)
-* [3: Documentation](https://github.com/csci-3308-6/csci-3308-6/blob/master/readme.md#3-documentation)
+HTML, CSS, and some JavaScript.
 
-## 1: What is Virtual Casino?
+## Section 2: Integration Layer (Middle)
 
-## 2: Quick Start
+Nothing so far.
 
-## 3: Documentation
+## Section 3: Back End
 
+SQL.
