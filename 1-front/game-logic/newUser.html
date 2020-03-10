@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Create New User</title>
+    <!-- <link href="newUser.css" rel="stylesheet" type="text/css" > -->
+    <link href="newUser.css" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel='icon' href='../resources/img/favicon.ico' type='image/x-icon'/>
+    <link href="../resources/css/my_style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        p.double {border-style: double;}
+        /* Create two equal columns that floats next to each other */
+        .column {
+          float: left;
+          width: 50%;
+          padding: 10px;
+          height: 500px; /* Should be removed. Only for demonstration */
+          border: solid blue;
+          border-width: thin;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+  <div class="row">
+    <div class="column" style="background-color:"white";">
+
+      <h2>Display Character</h2>
+
+    </div>
+    <div class="column" style="background-color:#bbb;">
+
+      <h2>Customize Character</h2>
+      <!-- dropdown menu to select shape-->
+
+      <!-- <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+  </div>> -->
+
+    <div class="container">
+
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Shape
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Circle</a></li>
+          <li><a href="#">Triangle</a></li>
+          <li><a href="#">Square</a></li>
+
+        </ul>
+      </div>
+
+      <hr>
+
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Color
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a id="blue" href="#">Blue</a></li>
+        <li><a id="green" href="#">Green</a></li>
+        <li><a id="red" href="#">Red</a></li>
+      </ul>
+    </div>
+
+
+  <hr>
+
+    <!-- create player button -->
+    <form action=./outside.html> <!-- add action page -->
+      <label for="Display Name">Enter display name:</label><br>
+      <input type="text" id="dname" name="Display Name" value=""><br>
+      <hr>
+      <input type="submit" value="Submit">
+    </form>
+
+   </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+<script>
+    //color change
+    var dispColor = document.getElementById('')
+</script>
+
+</body>
+</html>
