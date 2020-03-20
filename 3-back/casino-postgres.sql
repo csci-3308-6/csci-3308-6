@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS token (
 );
 
 CREATE TABLE IF NOT EXISTS user_token (
-	token_ID INT ,
+	token_ID INT,
     user_ID INT,
     PRIMARY KEY(token_ID, user_ID)
 );
