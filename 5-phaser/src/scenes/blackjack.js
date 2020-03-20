@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 import sky from '../assets/sky.png';
-import dude from "../assets/sq.png";
-
+import dude from "../assets/square.png";
 
 export default class BlackJack extends Phaser.Scene {
     constructor() { 
@@ -24,26 +23,18 @@ export default class BlackJack extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
     }
 
-    update ()
-    {
-        if (this.cursors.left.isDown)
-        {
+    update () {
+        if (this.cursors.left.isDown) {
             this.player.setVelocityX(-160);
-
-         //   player.anims.play('left', true);
         }
-        else if (this.cursors.right.isDown)
-        {
+        else if (this.cursors.right.isDown) {
             this.player.setVelocityX(160);
-
-         //   player.anims.play('right', true);
         }
-        else if (this.cursors.up.isDown) //&& player.body.touching.down)
-        {
+        else if (this.cursors.up.isDown) {
             this.player.setVelocityY(-160);
             
         }
-        else if (this.cursors.down.isDown) //&& player.body.touching.down)
+        else if (this.cursors.down.isDown)
         {
             this.player.setVelocityY(160);
         }

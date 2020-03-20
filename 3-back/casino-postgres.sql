@@ -7,15 +7,15 @@ CREATE TABLE IF NOT EXISTS users (
     stats_ID INT,
     display_ID INT,
     PRIMARY KEY (user_ID)
-    );
+);
 
-CREATE TABLE IF NOT EXISTS display(
+CREATE TABLE IF NOT EXISTS display (
 	display_ID SERIAL,
     display_name VARCHAR(45),
 	shape VARCHAR(45) NULL,
     color VARCHAR(45) NULL,
     PRIMARY KEY (display_ID)
-    );
+);
 
 
 CREATE TABLE IF NOT EXISTS stats (
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS stats (
     games_lost INT,
     net_profit INT,
     PRIMARY KEY(stats_ID)
-    );
+);
 
 ALTER TABLE users
 	ADD CONSTRAINT fk_cons
@@ -41,13 +41,13 @@ CREATE TABLE IF NOT EXISTS token (
     shape VARCHAR(45) NULL,
     color VARCHAR(45) NULL,
     PRIMARY KEY(token_ID)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS user_token (
 	token_ID INT ,
     user_ID INT,
     PRIMARY KEY(token_ID, user_ID)
-    );
+);
 
 INSERT INTO users (username, user_password)
 	VALUES ('tecon321', 'password');

@@ -7,15 +7,15 @@
         <!-- Vanilla Head Stuff -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Retr.io Games: Game Room">
+        <meta name="description" content="Retr.io Games: Game of Life">
         <meta name="author" content="Liam Mulhall">
-        <title>Retr.io Games: Game Room</title>
+        <title>Retr.io Games: Game of Life</title>
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="../resources/styles/game.css">
+        <link rel="stylesheet" href="../resources/styles/game-of-life.css">
 
     <!-- END HEAD -->
     </head>
@@ -24,10 +24,18 @@
     <body class="text-center">
    
         <!-- Title -->
-        <h1>Game Room</h1>
+        <h1>Game of Life</h1>
         
         <!-- Game -->
-        <canvas id="canvas" height="600" width="800"></canvas>
+        <div id="game">
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="start" class="btn btn-secondary btn-sm">Start</button>
+            <button id="clear" class="btn btn-secondary btn-sm">Clear</button>
+            <button id="random" class="btn btn-secondary btn-sm">Random</button>
+        </div>
 
         <!-- Home, Sign In, and Sign Up -->
         <ul class="nav justify-content-center">
@@ -47,8 +55,8 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-        <!-- Custom JS for Room -->
-        <script src="../resources/scripts/game-room.js"></script>
+        <!-- Custom JS for Game of Life -->
+        <script src="../resources/scripts/game-of-life.js"></script>
 
     <!-- END BODY -->
     </body>
