@@ -1,9 +1,4 @@
 import Phaser from "phaser";
-import cBG from "../assets/casinoBG.jpg";
-import table from "../assets/Table.png";
-import vwall from "../assets/VerticalWall.png";
-import dude from "../assets/sq.png";
-import arcade from "../assets/arcade.png"
 
 export default class GameScene extends Phaser.Scene {
     constructor () {
@@ -21,15 +16,9 @@ export default class GameScene extends Phaser.Scene {
       this.action_key = null;
     }
     
-    preload ()
-    {
-        this.load.image('arcade', arcade);
-        this.load.image('casino', cBG);
-        this.load.image('blackjack', table);
-        this.load.image('vwall', vwall);
-        this.load.image('dude', dude);
+    preload () {
+        
     }
-
     create ()
     {
         this.add.image(400, 300, 'casino');
@@ -54,6 +43,7 @@ export default class GameScene extends Phaser.Scene {
         this.player_name = this.add.text(-30,-50, "Player", {color: '#FFFFFF'});
         this.player = this.add.container(750,300, [this.player_sprite, this.player_name]);
         this.player.setSize(70,70);
+
         this.physics.world.enable(this.player);
 
         /*
@@ -110,16 +100,14 @@ export default class GameScene extends Phaser.Scene {
             this.player.body.setVelocityY(160);
         }
         
-
-        /* Testing different scene transitions
+        /*
+         Testing different scene transitions
         if(this.player.x < -50)
             this.scene.start('blackjack', );
-
+        */
         this.input.keyboard.on('keydown_F', function (event) {
-
-            this.text_test.setText("WOO")
-
-        }, this); */
+            this.scene.start('blackjack');
+        }, this); 
 
     }
   };
