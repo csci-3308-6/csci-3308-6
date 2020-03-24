@@ -1,20 +1,4 @@
-@font-face {
-    font-family: 'Casino';
-    src: URL('./casino-font/CasinoShadow.ttf') format('truetype');
-}
-
-body {
-    font-family: 'Casino';
-    margin: 50px;
-    background-color: black;
-}
-
-h1 {
-    color: white;
-    font-size: 144px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+@import "base.css";
 
 form {
     margin-top: 10px;
@@ -40,13 +24,4 @@ button {
 ul {
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-@media only screen and (max-width: 600px) {
-    body {
-        margin: 2px;
-    }
-    h1 {
-        font-size: 72px;
-    }
 }
