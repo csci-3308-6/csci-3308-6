@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true,}))
 var pgp = require('pg-promise')();
 
 const Pool = require('pg').Pool
-const pool = new Pool({
+const db = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'casino',
@@ -21,11 +21,14 @@ const pool = new Pool({
   port: 5432,
 })
 
-var db = pgp(Pool);
-
+const schema = "sdtdb";
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));
 
+	var query = 'SELECT * from sdtdb.users;'
+	var res = db.query(query)
+
+console.log(res)
 app.get('sign-up', function(req, res){
 	var email = req.query.email;
 	var pwd   = req.query.pwd;
