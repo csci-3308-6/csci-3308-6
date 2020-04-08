@@ -26,10 +26,5 @@ app.get('sign-up', function(req, res){
 	db.any(query)
 });
 
-
-
-
-
-
 app.listen(3000);
 console.log('3000 is the magic port');
