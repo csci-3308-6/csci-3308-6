@@ -10,11 +10,28 @@ const port = 3000
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true,}))
 
+var pgp = require('pg-promise')();
+
 const Pool = require('pg').Pool
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'retrio-games-db',
+  database: 'casino',
   password: 'password',
   port: 5432,
 })
+
+var db = pgp(Pool);
+
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/'));
+
+app.get('sign-up', function(req, res){
+	var email = req.query.email;
+	var pwd   = req.query.pwd;
+	var query = 'INSERT INTO users (username, user_password) VALUES ('+email+', '+pwd+');'
+	db.any(query)
+});
+
+app.listen(3000);
+console.log('Running on port 3000');
