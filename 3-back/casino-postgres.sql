@@ -1,8 +1,9 @@
 CREATE DATABASE casino;
-CREATE SCHEMA IF NOT EXISTS sdtdb;
+--CREATE SCHEMA sdtdb;
+\c casino;
 
 CREATE TABLE IF NOT EXISTS users (
-	user_ID SERIAL,
+    user_ID SERIAL,
     username VARCHAR(45) NULL,
     user_password VARCHAR(45) NULL,
     stats_ID INT,
@@ -11,9 +12,9 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE TABLE IF NOT EXISTS display (
-	display_ID SERIAL,
+    display_ID SERIAL,
     display_name VARCHAR(45),
-	shape VARCHAR(45) NULL,
+    shape VARCHAR(45) NULL,
     color VARCHAR(45) NULL,
     PRIMARY KEY (display_ID)
 );
@@ -38,14 +39,14 @@ ALTER TABLE users
     FOREIGN KEY (display_ID) REFERENCES display (display_ID);
 
 CREATE TABLE IF NOT EXISTS token (
-	token_ID SERIAL,
+    token_ID SERIAL,
     shape VARCHAR(45) NULL,
     color VARCHAR(45) NULL,
     PRIMARY KEY(token_ID)
 );
 
 CREATE TABLE IF NOT EXISTS user_token (
-	token_ID INT,
+    token_ID INT,
     user_ID INT,
     PRIMARY KEY(token_ID, user_ID)
 );

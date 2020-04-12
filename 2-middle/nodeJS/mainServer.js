@@ -21,17 +21,17 @@ const db= new Pool({
   port: 5432,
 })
 
-app.set('view engine', 'ejs');
-app.use(express.static('../../1-front/'));
+//app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/'));
 
 app.get('/', function(req, res){
 	//var email = req.query.email;
 	//var pwd   = req.query.pwd;
-	var query = 'INSERT INTO users (username, user_password) VALUES (\'hello\', \'hello\');'
+	var query = 'INSERT INTO users (username, user_password) VALUES (\'sup\', \'sup\');'
 	//var query = 'SELECT * from users;'
 	db.query(query)
-  	res.render('/signup',{
-		my_title:"Login Page"
+  	res.sendFile('./views/sign-up.html',{
+		root:__dirname
 	});
 
 });

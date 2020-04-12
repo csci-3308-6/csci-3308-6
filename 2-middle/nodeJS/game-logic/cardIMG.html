@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Liam Mulhall, Ted Conklin">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./blackjack.css">
+    <title> Casino Login Page</title>
+</head>
+<body>  <!--onload="startGame()"-->
+
+    <center><p>Your hand</p></center>
+    <div class="row justify-content-center" id="x">
+        <img id="pcard1" width="50" height="80" src="./emptycardslot.PNG">
+        &nbsp;
+        <img id="pcard2" width="50" height="80" src="./emptycardslot.PNG">
+    </div>
+
+    <center><div class="buttonbox" id="startgame">
+        <button alt="start" id="start" onclick="f()">Play</button>
+    </div></center>
+
+
+
+    <!-- enter player name and buyin -->
+    <!-- <form action="/action_page.php">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputName1"></label>
+                <input type="text" class="form-control" id="pname" placeholder="Player Name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputName1"></label>
+                <input type="text" class="form-control" id="buyin" placeholder="Buy-in Amount">
+            </div>
+        </div>
+    </form> -->
+
+    <script>
+    function f()
+    {
+    var img = document.createElement("img");
+
+    img.src = "./cardback.PNG";
+    var src = document.getElementById("x");
+
+    src.appendChild(img);
+    }
+
+    </script>
+</body>
+</html>
