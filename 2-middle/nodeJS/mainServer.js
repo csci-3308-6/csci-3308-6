@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true,}))
 var pgp = require('pg-promise')();
 
 const Pool = require('pg').Pool
-const db = new Pool({
+const db= new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'casino',
@@ -21,19 +21,20 @@ const db = new Pool({
   port: 5432,
 })
 
-app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/'));
+//app.set('view engine', 'ejs');
+//app.use(express.static(__dirname + '/'));
 
-	var query = 'SELECT * from users;'
-	var res = db.query(query);
+	//var query = 'SELECT * from users;'
+	//var res = db.query(query);
 
-console.log(res);
-//app.get('sign-up', function(req, res){
-//	var email = req.query.email;
-//	var pwd   = req.query.pwd;
-//	var query = 'INSERT INTO users (username, user_password) VALUES ('+email+', '+pwd+');'
-//	db.any(query)
-//});
+//console.log(res);
+app.get('/', function(req, res){
+	//var email = req.query.email;
+	//var pwd   = req.query.pwd;
+	var query = 'INSERT INTO users (username, user_password) VALUES (\'hello\', \'hello\');'
+	//var query = 'SELECT * from users;'
+	db.query(query)
+});
 
 app.listen(3000);
 console.log('Running on port 3000');
