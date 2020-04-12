@@ -21,20 +21,19 @@ const db = new Pool({
   port: 5432,
 })
 
-const schema = "sdtdb";
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));
 
-	var query = 'SELECT * from sdtdb.users;'
-	var res = db.query(query)
+	var query = 'SELECT * from users;'
+	var res = db.query(query);
 
-console.log(res)
-app.get('sign-up', function(req, res){
-	var email = req.query.email;
-	var pwd   = req.query.pwd;
-	var query = 'INSERT INTO users (username, user_password) VALUES ('+email+', '+pwd+');'
-	db.any(query)
-});
+console.log(res);
+//app.get('sign-up', function(req, res){
+//	var email = req.query.email;
+//	var pwd   = req.query.pwd;
+//	var query = 'INSERT INTO users (username, user_password) VALUES ('+email+', '+pwd+');'
+//	db.any(query)
+//});
 
 app.listen(3000);
 console.log('Running on port 3000');
