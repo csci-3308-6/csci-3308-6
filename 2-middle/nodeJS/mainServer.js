@@ -25,16 +25,22 @@ const db= new Pool({
 app.use(express.static(__dirname + '/'));
 
 app.get('/', function(req, res){
-	//var email = req.query.email;
-	//var pwd   = req.query.pwd;
-	var query = 'INSERT INTO users (username, user_password) VALUES (\'sup\', \'sup\');'
-	//var query = 'SELECT * from users;'
+  	res.sendFile('./views/sign-up.html',{
+		root:__dirname
+	});
+});
+
+app.post('/', function(req, res){
+	var email = req.body.email;
+	var pwd   = req.body.password;
+	var query = 'INSERT INTO users (username, user_password) VALUES (\''+email+'\', \''+pwd+'\');'
 	db.query(query)
   	res.sendFile('./views/sign-up.html',{
 		root:__dirname
 	});
-
 });
+
+
 
 app.listen(3000);
 console.log('Running on port 3000');
