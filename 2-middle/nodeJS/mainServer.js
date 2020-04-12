@@ -21,8 +21,24 @@ const db= new Pool({
   port: 5432,
 })
 
-//app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));
+
+//Questions:
+//Front End:
+//	How is avatar images implemented?
+//	Are we still changing colors/shapes?
+//	What is gonna be home page?
+//	Avatar setup page?
+//	
+//Back End:
+//	What is user_token used for?
+
+//TO-DO FUNCTIONS:
+//Sign In table:users
+//Post Game Stats table:stats
+//Get Money Values from Database
+//Get Colors from Database
+//Avatar Shape Color return? table:display
 
 app.get('/', function(req, res){
   	res.sendFile('./views/sign-up.html',{
