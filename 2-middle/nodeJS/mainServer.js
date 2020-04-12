@@ -29,14 +29,18 @@ app.use(express.static(__dirname + '/'));
 //	Are we still changing colors/shapes?
 //	What is gonna be home page?
 //	Avatar setup page?
-//	
+//	More Game Tables?
+//	How many games are going to be implemented?
+//	BlackJack:
+//		Where are losses and money changes being stored?
+//
 //Back End:
 //	What is user_token used for?
 
 //TO-DO FUNCTIONS:
-//Sign In table:users
-//Post Game Stats table:stats
-//Get Money Values from Database
+//Sign In table:users            Brehn 
+//Post Game Stats table:stats    
+//Get Money Values from Database 
 //Get Colors from Database
 //Avatar Shape Color return? table:display
 
