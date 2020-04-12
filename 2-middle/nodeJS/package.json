@@ -6,7 +6,9 @@
   "license": "MIT",
   "dependencies": {
     "assert": "^2.0.0",
+    "ejs": "^3.0.2",
     "express": "^4.17.1",
+    "html": "^1.0.0",
     "pg": "^8.0.0",
     "pg-promise": "^10.5.0"
   }
