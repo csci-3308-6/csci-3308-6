@@ -1,0 +1,29 @@
+Index --> sign-in --> game --> blackjack/gameoflife
+      --> sign-up --> Charcter customization --> sign-in
+
+
+-home/signin/signup buttons are always there, should only be viewed on index page 
+-blackjack needs to be integrated as a view when user walks up to table
+-some sort of user identification variable that is used for fetching color/money from database -- set when user signs in -- needs to be accessed in blackjack.js (money) and game.html (color) -- set variable in mainserver.js and access it 
+
+
+/1-front/index.html
+-play now/home buttons don't make sense, user should either have to sign-in or sign-up from first page
+
+/1-front/sign-in.html
+-user signs in the takes you game.html
+-database needs to check for existing user, if user does not exist either re-enter username and password or take them to sign-up.html
+
+/1-front/sign-up.html
+-takes you to charcter-customization.html, then back to sign-in.html
+
+/1-front/game.html
+-need to add another table
+-one table should take you to blackjack page, other table should take you to game of life page
+-just to be picky, move game of life table in the middle more, so its not awkward in the corner
+
+/1-front/charcter-customization.html
+-once user picks color and display name is doesn't actually show up correctly on the game.html
+
+/1-front/game-logic
+-we need a variable to keep track of how much money the user lost/won, so that at the end of the game we can add/subtract from user database -- money-left variable
