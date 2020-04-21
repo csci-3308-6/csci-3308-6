@@ -20,29 +20,38 @@ const db= new Pool({
 app.use(express.static(__dirname + '/'));
 
 
-/* sign-up */
+/*Variables*/
+var currentUserID = '';
+
+/*Home Page*/
+
 
 app.get('/', function(req, res){
+  	res.sendFile('./views/index.html',{
+		root:__dirname
+	});
+});
+
+/* sign-up */
+
+app.get('/sign-up', function(req, res){
   	res.sendFile('./views/sign-up.html',{
 		root:__dirname
 	});
 });
 
-app.post('/', function(req, res){
+app.post('/sign-up', function(req, res){
+	currentUserID = req.body.email;
 	var email = req.body.email;
 	var pwd   = req.body.password;
 	var query = 'INSERT INTO users (username, user_password) VALUES (\''+ email +'\', \''+ pwd +'\');'
 	db.query(query)
-  	res.sendFile('./views/sign-up.html',{
+  	res.sendFile('./views/character-customization.html',{
 		root:__dirname
 	});
 });
 
 /* sign-in */
-
-var currentUserID =  ;
-
-
 
 /*
   charcter-customization.html --> game-room.js --> game.html
@@ -52,17 +61,20 @@ var currentUserID =  ;
   game-room.js needs to get that information when game.html loads
 */
 
-app.get('/', function(req, res){
-  	res.sendFile('./views/charcter-customization.html',{
-		root:__dirname
-	});
-});
-app.post('/', function(req, res){
+/*Might not need app-get, never called.*/
+//app.get('/sign-upcc', function(req, res){
+//  	res.sendFile('./views/character-customization.html',{
+//		root:__dirname
+//	});
+//});
+
+app.post('/sign-upcc', function(req, res){
   var name = req.body.characterName;
-  var color = req.body.characterColor;
-  var query = 'UPDATE display SET display_name = ' + name + ', shape = square, color = ' + color + ' WHERE display_id = ' + displayID + ';'
+  var color = req.body.characterColor.value;
+  console.log(color);
+  var query = 'UPDATE display SET display_name = ' + name + ', shape = square, color = ' + color + ' WHERE display_id = ' + currentUserID+ ';'
   db.query(query)
-  	res.sendFile('./views/charcter-customization.html',{
+  	res.sendFile('./views/index.html',{
 		root:__dirname
 	});
 });
