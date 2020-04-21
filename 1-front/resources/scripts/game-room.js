@@ -1,5 +1,7 @@
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
+//context.canvas.width = window.innerWidth*.6;
+//context.canvas.height = window.innerHeight*.6;
 
 class Character {
     constructor(name, shape, color, radius, x, y) {
@@ -152,23 +154,31 @@ function movementHandler(character) {
 
 const character = new Character("Alice", "square", "blue", 10, 400, 550);
 const gameOfLife = new Table(10, 10, 150, 100, "Game of Life", "../views/game-of-life.html");
+const blackjack = new Table(640, 10, 150, 100, "Blackjack", "../views/blackJack.html");
 
 function characterIsInTable (character, table) {
-    if(character.x >= table.x && character.x <= table.width && character.y >= table.y && character.y <= table.height) {
+    let tableRightBound = table.x + table.width;
+    let tableBottomBound = table.y + table.height;
+    if(character.x >= table.x && character.x <= tableRightBound && character.y >= table.y && character.y <= tableBottomBound) {
         return 1;
     }
     else {
         return 0;
     }
 }
-
 function roomDriver() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     character.draw();
     gameOfLife.draw();
     gameOfLife.drawName();
+    blackjack.draw();
+    blackjack.drawName();
     if(characterIsInTable(character, gameOfLife)) {
-        window.location.assign(gameOfLife.page);
+        window.location.href = gameOfLife.page;
+    }
+    if(characterIsInTable(character, blackjack)) {
+        window.location.href = blackjack.page;
+
     }
     movementHandler(character);
 }
