@@ -153,8 +153,8 @@ function movementHandler(character) {
 }
 
 const character = new Character("Alice", "square", "blue", 10, 400, 550);
-const gameOfLife = new Table(10, 10, 150, 100, "Game of Life", "../views/game-of-life.html");
-const blackjack = new Table(640, 10, 150, 100, "Blackjack", "../views/blackJack.html");
+const gameOfLife = new Table(10, 300, 150, 100, "Game of Life", "../views/game-of-life.html");
+const blackjack = new Table(640, 300, 150, 100, "Blackjack", "../views/blackJack.html");
 
 function characterIsInTable (character, table) {
     let tableRightBound = table.x + table.width;
