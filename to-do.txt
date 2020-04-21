@@ -12,6 +12,8 @@ VIEWS
 
 - optional: make game room a little more nice looking by putting tables more center in room
 
+- character-customization: option for a circle shape ?
+
 
 INTEGRATION
 
@@ -19,10 +21,23 @@ INTEGRATION
 ~ blackjack game for keeping track of cash
 ~ game room for color and shape of character 
 
-- sign-in authentication 
+- sign-in:
+~ confirm user actually exists
+~ set id variable ^^^
 
 - character customization:
-~ returning user gets his saved color/shape in game room
+~ returning user insert/set display table (shape, color)
 ~ random play-now user gets temporary color/shape saved while they stay on the server
 
-- keeping blackjack stats including: coach, games lost, games won, games played, net profit
+- blackjack stats: 
+~ cash, games lost, games won, games played, net profit
+
+- sign-up
+~ insert: username, password
+~ increment: user_id, display_id, stats_id
+
+
+BACKEND
+
+- no table keeping track of money ?
+
