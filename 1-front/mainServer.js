@@ -28,9 +28,9 @@ var user = {
   statsID: ""
 }
 app.get('/setuser', function(req, res){
-  var user = 'SELECT user_ID FROM users WHERE user_ID = '+ user.userID +';';
-  var display = 'SELECT display_ID FROM display WHERE display_ID = '+ user.displayID +';';
-  res.cookie("userData", user);
+  res.cookie("userID", user.userID);
+  res.cookie("displayID", user.displayID);
+  res.cookie("statID", user.statID);
   res.send('user data added to cookie');
 });
 
@@ -62,16 +62,10 @@ app.post('/sign-up', function(req, res){
 });
 
 /* character customization */
-// app.get('/sign-upcc', function(req, res){
-//   var query = 'SELECT user_ID FROM users WHERE username = '+ user.userID +');'
-//   db.query(query)
-//   //user.userID = query.user_ID;
-//   console.log(query);
-// });
 app.post('/sign-up/cc', function(req, res){
   var name = req.body.characterName;
   var color = req.body.characterColor.value;
-  var query = 'INSERT INTO display (display_ID, display_name, shape, color) VALUES (2, \''+ name +'\', \'square\', \''+ color +'\');'
+  var query = 'INSERT INTO display (display_name, shape, color) VALUES ( \''+ name +'\', \'square\', \''+ color +'\');'
   db.query(query)
   	res.sendFile('/views/sign-in.html',{
 		root:__dirname
