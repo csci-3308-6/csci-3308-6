@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/'));
 
 const Pool = require('pg').Pool
 const db = new Pool({
-  user: 'nattobiason',
+  user: 'postgres',
   host: 'localhost',
   database: 'casino',
   password: 'password',
@@ -22,6 +22,7 @@ const db = new Pool({
 
 
 /* Cookie */
+
 var user = {
   userID: "",
   displayID: "",
@@ -51,7 +52,7 @@ app.get('/sign-up', function(req, res){
 	});
 });
 app.post('/sign-up', function(req, res){
-	user.userID = req.body.email;
+	user.userID = req.body.email; // somehow get the actual user_ID not the email
 	var email = req.body.email;
 	var pwd   = req.body.password;
 	var query = 'INSERT INTO users (username, user_password) VALUES (\''+ email +'\', \''+ pwd +'\');'
@@ -60,6 +61,16 @@ app.post('/sign-up', function(req, res){
 		root:__dirname
 	});
 });
+
+/* sign in */
+app.get('/sign-in', function(req, res){
+  var email = req.body.email;
+  var pwd = req.body.password;
+  var query = 'SELECT user_ID, display_ID, stat_ID FROM users WHERE username = '+ email +', user_password = '+ pwd +';'
+  // check if query exsist
+  // if it does send user_ID, display_ID, and stat_ID to user.userID etc --> and send user to game room page
+  // if query does not exsist then ask to re-enter username/password or whatever
+})
 
 /* character customization */
 app.post('/sign-up/cc', function(req, res){
@@ -70,6 +81,7 @@ app.post('/sign-up/cc', function(req, res){
   	res.sendFile('/views/sign-in.html',{
 		root:__dirname
 	});
+  // match display_ID incremented in display table to the empty display_ID in user table
 });
 
 
