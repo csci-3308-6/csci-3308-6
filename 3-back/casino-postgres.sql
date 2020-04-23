@@ -3,8 +3,7 @@ CREATE DATABASE casino;
 \c casino;
 
 CREATE TABLE IF NOT EXISTS users (
-    user_ID SERIAL,
-    username VARCHAR(45) NULL,
+    user_ID VARCHAR(45) NULL,
     user_password VARCHAR(45) NULL,
     -- stats_ID INT,
     -- display_ID INT,
@@ -12,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE TABLE IF NOT EXISTS display (
-    display_ID SERIAL,
+    display_ID VARCHAR(45) NULL,
     display_name VARCHAR(45),
     shape VARCHAR(45) NULL,
     color VARCHAR(45) NULL,
@@ -21,7 +20,7 @@ CREATE TABLE IF NOT EXISTS display (
 
 
 CREATE TABLE IF NOT EXISTS stats (
-  stats_ID SERIAL,
+  stats_ID VARCHAR(45) NULL,
     games_played INT,
     account_balance INT,
     games_won INT,
@@ -50,11 +49,5 @@ CREATE TABLE IF NOT EXISTS stats (
 --     user_ID INT,
 --     PRIMARY KEY(token_ID, user_ID)
 -- );
-
-INSERT INTO users (username, user_password)
-	VALUES ('tecon321', 'password');
-
-INSERT INTO users (username, user_password)
-	VALUES ('joe', '1234');
 
 SELECT * FROM users;

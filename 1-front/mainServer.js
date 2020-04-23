@@ -67,7 +67,7 @@ app.get('/sign-in', function(req, res){
   var email = req.body.email;
   var pwd = req.body.password;
   var query = 'SELECT user_ID, display_ID, stat_ID FROM users WHERE username = '+ email +', user_password = '+ pwd +';'
-  // check if query exsist
+  // check if query exist
   // if it does send user_ID, display_ID, and stat_ID to user.userID etc --> and send user to game room page
   // if query does not exsist then ask to re-enter username/password or whatever
 })
@@ -78,19 +78,18 @@ app.post('/sign-up/cc', function(req, res){
   var color = req.body.characterColor.value;
   var query = 'INSERT INTO display (display_name, shape, color) VALUES ( \''+ name +'\', \'square\', \''+ color +'\');'
   db.query(query)
-  	res.sendFile('/views/sign-in.html',{
+  	res.sendFile('/views/game.html',{
+		res_color: color
+		res_name: name
 		root:__dirname
 	});
   // match display_ID incremented in display table to the empty display_ID in user table
 });
 
-
-
-/* black-jack */
+/blacedwsed
+jack */
 
 /* game-room */
-
-
 
 /* sign-out -- delete cookies */
 app.get('/sign-out', (req, res) => {
